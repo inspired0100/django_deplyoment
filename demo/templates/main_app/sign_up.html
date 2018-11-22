@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'main_app/base.html' %}
+{% load crispy_forms_tags %}
+  {% block body_block %}
+
+  <h1>Please sign up,</h1>
+  <form method="post">
+      {% csrf_token %}
+      <!-- for Cross Site Request Forgery -->
+      <div class="form-group">
+        {{ form.first_name|as_crispy_field }}
+      </div>
+      <div class="form-group">
+        {{ form.last_name|as_crispy_field }}
+      </div>
+      <div class="form-group">
+        {{ form.email|as_crispy_field }}
+      </div>
+      <div class="form-group">
+        {{ form.verify_email|as_crispy_field }}
+      </div>
+
+      <!-- <div class="form-group">
+        for password
+      </div> -->
+
+      <div class="form-group">
+        {{ form.url|as_crispy_field }}
+      </div>
+
+      <div class="form-group">
+        {{ form.bot_catcher|as_crispy_field }}
+      </div>
+
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+
+  {% endblock %}

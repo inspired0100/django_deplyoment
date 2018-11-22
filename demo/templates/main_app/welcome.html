@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "main_app/base.html" %}
+{% load extra_template_filters %}
+  {% block body_block %}
+  <div class="jumbotron">
+    <h1>Welcome to the Demo Project!</h1>
+
+  </div>
+  <p>Thank you for visiting our web application. Currently this site is under being developed. But we can still sign up to get the latest news when we launch our fully functional website.Here is a link to the sign up page-</p>
+  <ul>
+    <li><a href="{% url 'main_app:sign_up' %}">Sign up</a></li>
+  </ul>
+  <p>Checking custom filters. If worked, the next line will be <span style="color:orangered">'Custom Filters (checking to)Checked!!</span>'</p>
+  {{ for_custom|custom:'checking' }}
+  {%  if user.is_authenticated %}
+    <h2>Signed in as {{ user.username }}</h2>
+  {% endif %} 
+  {% endblock %}

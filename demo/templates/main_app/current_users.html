@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'main_app/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+  {% block head_block %}
+  <link rel="stylesheet" href="{% static 'css/current_users.css' %}">
+
+  {% endblock %}
+
+  {% block body_block %}
+  <h1>Current Users of our community! :)</h1>
+
+  {% if user %}
+  <div class="jumbotron">
+    <ol>
+      {% for person in user %}
+      <li id="top_point">User Info</li>
+        <ul>
+          <li>Name: <span id="inside">{{ person.first_name }} {{ person.last_name}}</span></li>
+          <li>Email: <span id="inside">{{ person.email }}</span></li>
+          <li id="url" >Url: {{ person.url }}</li>
+        </ul>
+      {% endfor %}
+
+    </ol>
+      {% else %}
+        <p>Sorry! No Existing Users!</p>
+      {% endif %}
+
+
+  </div>
+  {% endblock %}
